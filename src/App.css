@@ -50,3 +50,26 @@ button:focus:not(:focus-visible) {
     height: 100%;
     object-fit: cover;
 }
+
+
+
+@media (max-width: 900px){
+    .swiper-slide img{
+
+        height: auto;
+        position: relative;
+        bottom: -50px;
+        margin: 0 auto;
+        object-fit: unset;
+    }
+    .swiper-slide{
+        background: #fcfcff;
+        border-radius: 25px;
+
+        }
+    :root {
+        --swiper-theme-color: black !important;
+    }
+
+}
+

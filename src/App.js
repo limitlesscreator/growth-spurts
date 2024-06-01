@@ -19,17 +19,21 @@ import famuily from '../src/img/100000famuily.svg'
 import review1 from '../src/img/reviewStar1.svg'
 import review2 from '../src/img/reviewStar2.svg'
 import phoneFirstSlide from '../src/img/phoneFirstSlide.png'
+import phoneSecondSlide from '../src/img/phoneSecondSlide.png'
+import phoneThirdSlide from '../src/img/phoneThirdSlide.png'
+import phoneThirdFour from '../src/img/phoneThirdFour.png'
 import review3 from '../src/img/reviewStar3.svg'
 import bunny from '../src/img/bunny.png'
 import inst from '../src/img/insta.png'
 import telegram from '../src/img/telegram.png'
 import {useState} from "react";
-import  './App.css'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import './App.css'
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Mousewheel, Pagination} from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+
 function App() {
 
     const [language, setLanguage] = useState('RU')
@@ -68,7 +72,7 @@ function App() {
                     <div className={s.leftSideSection1} id={'leftSide'}>
                         <h2>Создано родителями для родителей –
                             при поддержке педиатров</h2>
-                        <div  className={`${s.elemS1} ${s.marginForElem}`}>
+                        <div className={`${s.elemS1} ${s.marginForElem}`}>
                             <img src={elem1s1} alt="elem1s1"/>
                             Дневник замеров роста, веса, охватов
                         </div>
@@ -84,11 +88,19 @@ function App() {
                     </div>
                     <div>
                         <img className={s.phone} src={phone} alt="phone"/>
+                        <img className={s.phoneDisplayOnMobile} src={phone} alt="phone"/>
+
                     </div>
 
                 </div>
 
                 <div className={s.section2}>
+                    <div className={s.showOnMobileApllePlay}>
+                        <a href="https://itunes.apple.com/cy/app/id1662980687/id1662980687?mt=8"><img
+                            className={s.downloadApp} src={appDownload} alt=""/></a>
+                        <a href="https://play.google.com/store/apps/details?id=happy.mom.android"><img
+                            className={s.downloadApp} src={googleplay} alt=""/></a>
+                    </div>
                     <div className={s.qrCode}>
                         <img src={qrCode} className={s.qrCodeImg} alt="qrCopde"/>
                         <div>
@@ -96,12 +108,15 @@ function App() {
                             приложение уже сегодня
                             <div className={s.subTitle}>
                                 Это бесплатно. И безопасно
-                                <a href="https://itunes.apple.com/cy/app/id1662980687/id1662980687?mt=8"><img className={s.downloadApp} src={appDownload} alt=""/></a>
-                                <a href="https://play.google.com/store/apps/details?id=happy.mom.android"><img className={s.downloadApp} src={googleplay} alt=""/></a>
+                                <a href="https://itunes.apple.com/cy/app/id1662980687/id1662980687?mt=8"><img
+                                    className={s.downloadApp} src={appDownload} alt=""/></a>
+                                <a href="https://play.google.com/store/apps/details?id=happy.mom.android"><img
+                                    className={s.downloadApp} src={googleplay} alt=""/></a>
 
                             </div>
                         </div>
                     </div>
+
                     <div className={s.weHaveTrust}>
                         <img className={s.leftSideGrass} src={traba} alt="img"/>
                         <img className={s.rightSideGrass} src={traba} alt="img"/>
@@ -110,47 +125,152 @@ function App() {
                         100 000+ мам и пап
                         <div className={s.reviews}>
                             <div><b>4.9</b> App Store</div>
-                            <div style={{marginLeft: '20px'}}><b>4.8</b> GooglePlay </div>
+                            <div style={{marginLeft: '20px'}}><b>4.8</b> GooglePlay</div>
                         </div>
                     </div>
                 </div>
 
                 <h3 style={{marginTop: '120px'}}>Растём вместе. <br/>
                     С каждым скачком</h3>
-
                 <div className={s.section3}>
                     <Swiper
+                        onAnimationStart={() => console.log('started')}
                         direction={'vertical'}
                         pagination={{
-                            clickable: true,
+                            clickable: false,
                         }}
-                        modules={[Pagination]}
+                        speed={1000}
+                        mousewheel={true}
+                        modules={[Mousewheel, Pagination]}
                         className="swiper"
+                        loop={true}
+
+                        /*WORKING BELLOW*/
+                        onSlideChange={(e) => {
+                            // is swiping? then check current index and add opacity to previous
+                            if (e.realIndex === 1) {
+                                document.querySelector(`.${s.phoneSlide1}`).style.opacity = 0
+                                document.querySelector(`.${s.phoneSlide2}`).style.opacity = 1
+                                document.querySelector(`.${s.phoneSlide4}`).style.opacity = 1
+
+                                document.querySelector(`.${s.leftSlideText1}`).style.opacity = 0
+                                document.querySelector(`.${s.leftSlideText2}`).style.opacity = 1
+                                document.querySelector(`.${s.leftSlideText4}`).style.opacity = 1
+
+                                document.querySelector(`.${s.secondTextSlideOne}`).style.opacity = 0
+                                document.querySelector(`.${s.secondTextSlideTwo}`).style.opacity = 1
+                                document.querySelector(`.${s.secondTextSlideFour}`).style.opacity = 1
+
+
+                            }
+                            if (e.realIndex === 2) {
+                                document.querySelector(`.${s.phoneSlide2}`).style.opacity = 0
+                                document.querySelector(`.${s.phoneSlide1}`).style.opacity = 1
+                                document.querySelector(`.${s.phoneSlide3}`).style.opacity = 1
+
+                                document.querySelector(`.${s.leftSlideText2}`).style.opacity = 0
+                                document.querySelector(`.${s.leftSlideText1}`).style.opacity = 1
+                                document.querySelector(`.${s.leftSlideText3}`).style.opacity = 1
+
+                                document.querySelector(`.${s.secondTextSlideTwo}`).style.opacity = 0
+                                document.querySelector(`.${s.secondTextSlideOne}`).style.opacity = 1
+                                document.querySelector(`.${s.secondTextSlideThree}`).style.opacity = 1
+
+                            }
+                            if (e.realIndex === 3) {
+                                document.querySelector(`.${s.phoneSlide3}`).style.opacity = 0
+                                document.querySelector(`.${s.phoneSlide2}`).style.opacity = 1
+                                document.querySelector(`.${s.phoneSlide4}`).style.opacity = 1
+
+                                document.querySelector(`.${s.leftSlideText3}`).style.opacity = 0
+                                document.querySelector(`.${s.leftSlideText2}`).style.opacity = 1
+                                document.querySelector(`.${s.leftSlideText4}`).style.opacity = 1
+
+                                document.querySelector(`.${s.secondTextSlideThree}`).style.opacity = 0
+                                document.querySelector(`.${s.secondTextSlideTwo}`).style.opacity = 1
+                                document.querySelector(`.${s.secondTextSlideFour}`).style.opacity = 1
+
+
+                            }
+                            if (e.realIndex === 0) {
+                                document.querySelector(`.${s.phoneSlide4}`).style.opacity = 0
+                                document.querySelector(`.${s.phoneSlide3}`).style.opacity = 1
+                                document.querySelector(`.${s.phoneSlide1}`).style.opacity = 1
+
+                                document.querySelector(`.${s.leftSlideText4}`).style.opacity = 0
+                                document.querySelector(`.${s.leftSlideText3}`).style.opacity = 1
+                                document.querySelector(`.${s.leftSlideText1}`).style.opacity = 1
+
+                                document.querySelector(`.${s.secondTextSlideFour}`).style.opacity = 0
+                                document.querySelector(`.${s.secondTextSlideThree}`).style.opacity = 1
+                                document.querySelector(`.${s.secondTextSlideOne}`).style.opacity = 1
+                            }
+
+                        }}
                     >
                         <SwiperSlide className={s.elemSlide}>
-                            <div className={s.leftSlideText}>Календарь <br/>
-                                скачков роста</div>
-                            <div>
-                                <img className={s.phoneSlide} src={phoneFirstSlide} alt="phone"/>
+                            <div className={s.leftSlideText1}>Календарь <br/>
+                                скачков роста
                             </div>
-                            <div className={s.secondTextSlide}>Показываем скачки роста в календаре и вместе с педиатрами рассказываем, что происходит с малышом до 78 недели. </div>
-                        </SwiperSlide>
-                        <SwiperSlide className={s.elemSlide}>
-                            <div className={s.leftSlideText}>Календарь <br/>
-                                скачков роста</div>
-                            <div>
-                                <img className={s.phoneSlide} src={phoneFirstSlide} alt="phone"/>
+                            <div className={s.secondTextSlideOneMobile}>Показываем скачки роста в календаре и вместе с
+                                педиатрами рассказываем, что происходит с малышом до 78 недели.
                             </div>
-                            <div className={s.secondTextSlide}>Показываем скачки роста в календаре и вместе с педиатрами рассказываем, что происходит с малышом до 78 недели. </div>
+
+                            <div>
+                                <img className={s.phoneSlide1} src={phoneFirstSlide} alt="phone"/>
+                            </div>
+                            <div className={s.secondTextSlideOne}>Показываем скачки роста в календаре и вместе с
+                                педиатрами рассказываем, что происходит с малышом до 78 недели.
+                            </div>
 
                         </SwiperSlide>
-                        <SwiperSlide>Slide 3</SwiperSlide>
-                        <SwiperSlide>Slide 4</SwiperSlide>
-                        <SwiperSlide>Slide 5</SwiperSlide>
-                        <SwiperSlide>Slide 6</SwiperSlide>
-                        <SwiperSlide>Slide 7</SwiperSlide>
-                        <SwiperSlide>Slide 8</SwiperSlide>
-                        <SwiperSlide>Slide 9</SwiperSlide>
+                        <SwiperSlide className={s.elemSlide}>
+                            <div className={s.leftSlideText2}>Трекеры сна, кормления, смены памперсов, сцеживания <br/>
+                                и настроения ребенка
+                            </div>
+                            <div className={s.secondTextSlideTwoMobile}>Вся важная информация о распорядке дня и
+                                ежедневной рутине ребёнка – в одном приложении.
+                            </div>
+
+                            <div>
+                                <img className={s.phoneSlide2} src={phoneSecondSlide} alt="phone"/>
+                            </div>
+                            <div className={s.secondTextSlideTwo}>Вся важная информация о распорядке дня и ежедневной
+                                рутине ребёнка – в одном приложении.
+                            </div>
+
+                        </SwiperSlide>
+                        <SwiperSlide className={s.elemSlide}>
+                            <div className={s.leftSlideText3}>Замеры роста, <br/> веса, охватов</div>
+                            <div className={s.secondTextSlideThreeMobile}>Фиксируйте ключевые цифры о росте вашего
+                                ребёнка – и отслеживайте, как они меняются. Сверяйтесь с нормами Всемирной организации
+                                здравоохранения.
+                            </div>
+
+                            <div>
+                                <img className={s.phoneSlide3} src={phoneThirdSlide} alt="phone"/>
+                            </div>
+                            <div className={s.secondTextSlideThree}>Фиксируйте ключевые цифры о росте вашего ребёнка – и
+                                отслеживайте, как они меняются. Сверяйтесь с нормами Всемирной организации
+                                здравоохранения.
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide className={s.elemSlide}>
+                            <div className={s.leftSlideText4}>Дневник важных <br/> сердцу моментов</div>
+                            <div className={s.secondTextSlideFourMobile}>Первые улыбка, зуб, шаг – сохраняйте важные
+                                события. А мы создадим видео, которым можно поделиться в соцсетях и мессенджерах с
+                                семьей и друзьями.
+                            </div>
+
+                            <div>
+                                <img className={s.phoneSlide4} src={phoneThirdFour} alt="phone"/>
+                            </div>
+                            <div className={s.secondTextSlideFour}>Первые улыбка, зуб, шаг – сохраняйте важные события.
+                                А мы создадим видео, которым можно поделиться в соцсетях и мессенджерах с семьей и
+                                друзьями.
+                            </div>
+                        </SwiperSlide>
+
                     </Swiper>
                 </div>
 
@@ -169,7 +289,8 @@ function App() {
                                         </div>
                                         <img className={s.imgChild} src={child}></img>
                                         <div className={s.subTitleChild}>
-                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet have support under them.
+                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet
+                                            have support under them.
                                             <br/> <br/>
                                             The baby's weight is completely in your hands!
                                         </div>
@@ -180,7 +301,8 @@ function App() {
                                         </div>
                                         <img className={s.imgChild} src={child2}></img>
                                         <div className={s.subTitleChild}>
-                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet have support under them.
+                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet
+                                            have support under them.
                                             <br/> <br/>
                                             The baby's weight is completely in your hands!
                                         </div>
@@ -191,12 +313,12 @@ function App() {
                                         </div>
                                         <img className={s.imgChild} src={child3}></img>
                                         <div className={s.subTitleChild}>
-                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet have support under them.
+                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet
+                                            have support under them.
                                             <br/> <br/>
                                             The baby's weight is completely in your hands!
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                             <div className="carousel-item">
@@ -207,7 +329,8 @@ function App() {
                                         </div>
                                         <img className={s.imgChild} src={child4}></img>
                                         <div className={s.subTitleChild}>
-                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet have support under them.
+                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet
+                                            have support under them.
                                             <br/> <br/>
                                             The baby's weight is completely in your hands!
                                         </div>
@@ -218,7 +341,8 @@ function App() {
                                         </div>
                                         <img className={s.imgChild} src={child5}></img>
                                         <div className={s.subTitleChild}>
-                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet have support under them.
+                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet
+                                            have support under them.
                                             <br/> <br/>
                                             The baby's weight is completely in your hands!
                                         </div>
@@ -229,7 +353,8 @@ function App() {
                                         </div>
                                         <img className={s.imgChild} src={child6}></img>
                                         <div className={s.subTitleChild}>
-                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet have support under them.
+                                            Hold your baby upright by the armpits and do a jump-skip, so that the feet
+                                            have support under them.
                                             <br/> <br/>
                                             The baby's weight is completely in your hands!
                                         </div>
@@ -238,12 +363,14 @@ function App() {
                                 </div>
                             </div>
                         </div>
-                        <button className={`carousel-control-prev ${s.ownStyleForLeftCarousel}`} type="button" data-bs-target="#carouselExample"
+                        <button className={`carousel-control-prev ${s.ownStyleForLeftCarousel}`} type="button"
+                                data-bs-target="#carouselExample"
                                 data-bs-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span className="visually-hidden">Previous</span>
                         </button>
-                        <button className={`carousel-control-next ${s.ownStyleForRightCarousel}`} type="button" data-bs-target="#carouselExample"
+                        <button className={`carousel-control-next ${s.ownStyleForRightCarousel}`} type="button"
+                                data-bs-target="#carouselExample"
                                 data-bs-slide="next">
                             <span className="carousel-control-next-icon" aria-hidden="true"></span>
                             <span className="visually-hidden">Next</span>
@@ -251,11 +378,100 @@ function App() {
                     </div>
                 </div>
 
-                <button className={s.moreExercise}>Больше упражнений в приложении </button>
+                <div className={s.coruselChildMobile}>
+                    <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+                        <SwiperSlide>
+                            <div className={s.childInThree}>
+                                <div className={s.titleInCard}>
+                                    “Jump, skip, skip”
+                                </div>
+                                <img className={s.imgChild} src={child}></img>
+                                <div className={s.subTitleChild}>
+                                    Hold your baby upright by the armpits and do a jump-skip, so that the feet have
+                                    support under them.
+                                    <br/> <br/>
+                                    The baby's weight is completely in your hands!
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={s.childInThree}>
+                                <div className={s.titleInCard}>
+                                    “Jump, skip, skip”
+                                </div>
+                                <img className={s.imgChild} src={child2}></img>
+                                <div className={s.subTitleChild}>
+                                    Hold your baby upright by the armpits and do a jump-skip, so that the feet have
+                                    support under them.
+                                    <br/> <br/>
+                                    The baby's weight is completely in your hands!
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={s.childInThree}>
+                                <div className={s.titleInCard}>
+                                    “Jump, skip, skip”
+                                </div>
+                                <img className={s.imgChild} src={child3}></img>
+                                <div className={s.subTitleChild}>
+                                    Hold your baby upright by the armpits and do a jump-skip, so that the feet have
+                                    support under them.
+                                    <br/> <br/>
+                                    The baby's weight is completely in your hands!
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={s.childInThree}>
+                                <div className={s.titleInCard}>
+                                    “Jump, skip, skip”
+                                </div>
+                                <img className={s.imgChild} src={child4}></img>
+                                <div className={s.subTitleChild}>
+                                    Hold your baby upright by the armpits and do a jump-skip, so that the feet
+                                    have support under them.
+                                    <br/> <br/>
+                                    The baby's weight is completely in your hands!
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={s.childInThree}>
+                                <div className={s.titleInCard}>
+                                    “Jump, skip, skip”
+                                </div>
+                                <img className={s.imgChild} src={child5}></img>
+                                <div className={s.subTitleChild}>
+                                    Hold your baby upright by the armpits and do a jump-skip, so that the feet
+                                    have support under them.
+                                    <br/> <br/>
+                                    The baby's weight is completely in your hands!
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={s.childInThree}>
+                                <div className={s.titleInCard}>
+                                    “Jump, skip, skip”
+                                </div>
+                                <img className={s.imgChild} src={child6}></img>
+                                <div className={s.subTitleChild}>
+                                    Hold your baby upright by the armpits and do a jump-skip, so that the feet
+                                    have support under them.
+                                    <br/> <br/>
+                                    The baby's weight is completely in your hands!
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
+
+                <button className={s.moreExercise}>Больше упражнений в приложении</button>
 
                 <div className={s.section4}>
                     <h3 style={{paddingTop: '60px'}}>100 000+ семей следят за развитием <br/>
-                        своих малышей вместе с нами  </h3>
+                        своих малышей вместе с нами </h3>
                     <img className={s.reviewsFamily} src={famuily} alt="family"/>
                     <div className={s.reviewsComments}>
                         <div>Не нашла ни одного приложения,
@@ -290,9 +506,13 @@ function App() {
                             </h2>
                             <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show">
                                 <div className="accordion-body">
-                                    С рождения и до 1,5 лет ребёнок переживает несколько кризисов роста и развития – их называют скачки роста. Не стоит их пугаться – это естественный процесс, во время которого происходит развитие нервной системы и мозга, появление новых умелок у малыша.
-<br/> <br/>
-                                    В такие периоды ребёнок может капризничать и плохо спать – настроение чернее тучки. Поэтому важно о них знать.
+                                    С рождения и до 1,5 лет ребёнок переживает несколько кризисов роста и развития – их
+                                    называют скачки роста. Не стоит их пугаться – это естественный процесс, во время
+                                    которого происходит развитие нервной системы и мозга, появление новых умелок у
+                                    малыша.
+                                    <br/> <br/>
+                                    В такие периоды ребёнок может капризничать и плохо спать – настроение чернее тучки.
+                                    Поэтому важно о них знать.
                                 </div>
                             </div>
                         </div>
@@ -389,8 +609,10 @@ function App() {
                                 приложение уже сегодня
                                 <div className={s.subTitle}>
                                     Это бесплатно. И безопасно
-                                    <a href="https://itunes.apple.com/cy/app/id1662980687/id1662980687?mt=8"><img className={s.downloadApp} src={appDownload} alt=""/></a>
-                                    <a href="https://play.google.com/store/apps/details?id=happy.mom.android"><img className={s.downloadApp} src={googleplay} alt=""/></a>
+                                    <a href="https://itunes.apple.com/cy/app/id1662980687/id1662980687?mt=8"><img
+                                        className={s.downloadApp} src={appDownload} alt=""/></a>
+                                    <a href="https://play.google.com/store/apps/details?id=happy.mom.android"><img
+                                        className={s.downloadApp} src={googleplay} alt=""/></a>
 
                                 </div>
                             </div>
@@ -403,15 +625,18 @@ function App() {
                     <div className={s.underFooter}>
                         <div className={s.firstUnderFooter}>
                             <span>Скачки роста</span>
-                            <div>Растём вместе. С каждым скачком.   </div>
+                            <div>Растём вместе. С каждым скачком.</div>
                         </div>
                         <div className={s.secondUnderFooter}>Если у вас есть вопросы о работе приложения <br/>
-                            или вы хотите обсудить сотрудничество, напишите нам: <br/><a href="mailto:dima@sprouty.app">dima@sprouty.app</a></div>
+                            или вы хотите обсудить сотрудничество, напишите нам: <br/><a
+                                href="mailto:dima@sprouty.app">dima@sprouty.app</a></div>
                         <div className={s.socials}>
 
 
-                            <a  href={language === "RU" ? `https://www.instagram.com/skachkirosta?igsh=MWxxbGs3cTd6ZzZwZg%3D%3D` : `https://www.instagram.com/sprouty.app?igsh=YTZwZjIyaGhubWxy`} ><img src={inst} alt="social"/></a>
-                            <a href={language === "RU" ? `https://t.me/skachkirosta` : `https://t.me/sproutyapp`}><img src={telegram} alt="social"/></a>
+                            <a href={language === "RU" ? `https://www.instagram.com/skachkirosta?igsh=MWxxbGs3cTd6ZzZwZg%3D%3D` : `https://www.instagram.com/sprouty.app?igsh=YTZwZjIyaGhubWxy`}><img
+                                src={inst} alt="social"/></a>
+                            <a href={language === "RU" ? `https://t.me/skachkirosta` : `https://t.me/sproutyapp`}><img
+                                src={telegram} alt="social"/></a>
                         </div>
 
                     </div>
@@ -420,7 +645,7 @@ function App() {
                     <div className={s.lastUnderFooter}>
                         <div>© 2024 Скачки роста</div>
                         <div className={s.politics}>
-                            <a href="https://sprouty.app/privacy-policy">Политика конфиденциальности    </a>
+                            <a href="https://sprouty.app/privacy-policy">Политика конфиденциальности </a>
                             •
                             <a href="https://sprouty.app/terms-of-service">Пользовательское соглашение</a>
                         </div>
