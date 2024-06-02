@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/growth-spurts/static/css/main.b861da1d.css",
+    "main.js": "/growth-spurts/static/js/main.0b0b3bd2.js",
+    "static/js/453.813206fb.chunk.js": "/growth-spurts/static/js/453.813206fb.chunk.js",
+    "static/media/10038.gif": "/growth-spurts/static/media/10038.8abfa3b478f3380c3fc5.gif",
+    "static/media/10009.gif": "/growth-spurts/static/media/10009.7715ef4106eb5f6bae8d.gif",
+    "static/media/phone.png": "/growth-spurts/static/media/phone.3693667f30ce583db47c.png",
+    "static/media/10011.gif": "/growth-spurts/static/media/10011.72a96b6378a8832305eb.gif",
+    "static/media/10012.gif": "/growth-spurts/static/media/10012.f83aa333f8e8273fe074.gif",
+    "static/media/10030.gif": "/growth-spurts/static/media/10030.2f2f288e6effa3104905.gif",
+    "static/media/10065.gif": "/growth-spurts/static/media/10065.7b3305a41d752ccf1134.gif",
+    "static/media/phoneThirdFour.png": "/growth-spurts/static/media/phoneThirdFour.f63111f12f8c662dfb71.png",
+    "static/media/phoneFirstSlide.png": "/growth-spurts/static/media/phoneFirstSlide.75b67be182eeecc8c4f8.png",
+    "static/media/phoneThirdSlide.png": "/growth-spurts/static/media/phoneThirdSlide.ba345178ae6881536ddb.png",
+    "static/media/bunny.png": "/growth-spurts/static/media/bunny.54935ead66e84b2154d8.png",
+    "static/media/phoneSecondSlide.png": "/growth-spurts/static/media/phoneSecondSlide.963c99397ee2e6bd0efe.png",
+    "static/media/100000famuily.svg": "/growth-spurts/static/media/100000famuily.bc33d0f0dc7edcf7c419b97dcdd5d0b2.svg",
+    "static/media/reviewStar2.svg": "/growth-spurts/static/media/reviewStar2.f96fe3598de7808004b9d9f4b4538bf6.svg",
+    "static/media/reviewStar3.svg": "/growth-spurts/static/media/reviewStar3.13784684fa4026f431f0b3fc5515a6a8.svg",
+    "static/media/reviewStar1.svg": "/growth-spurts/static/media/reviewStar1.badb1933ee6194ee850b1591ca59c1bf.svg",
+    "static/media/childPic.png": "/growth-spurts/static/media/childPic.b0283961c4100c539099.png",
+    "static/media/qrCode.png": "/growth-spurts/static/media/qrCode.b4b7ea5a932aeec25a8b.png",
+    "index.html": "/growth-spurts/index.html",
+    "main.b861da1d.css.map": "/growth-spurts/static/css/main.b861da1d.css.map",
+    "main.0b0b3bd2.js.map": "/growth-spurts/static/js/main.0b0b3bd2.js.map",
+    "453.813206fb.chunk.js.map": "/growth-spurts/static/js/453.813206fb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b861da1d.css",
+    "static/js/main.0b0b3bd2.js"
+  ]
+}
